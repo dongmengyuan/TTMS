@@ -1,51 +1,41 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ page pageEncoding="UTF-8" isErrorPage="false" errorPage="error.jsp"%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html>
 <head>
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="main.se.util.ConnectionManager" %>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <%--<meta http-equiv="Refresh" content="0";url="/index1.jsp">--%>
-<title>在此处插入标题</title>
+    <base href="<%=basePath%>">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <link rel="stylesheet" href="./view/system_manager/Bootstrap/bs.css">
+    <link rel="stylesheet" href="./view/system_manager/css/login.css">
 </head>
-<%--<body style="font-size:25pt">--%>
-<%--<%--%>
 
-<%--Connection con = ConnectionManager.getInstance().getConnection();--%>
-<%--PreparedStatement pstmt = null;--%>
-<%--ResultSet rs = null;--%>
-<%--try--%>
-<%--{--%>
-    <%--// 获取所有用户数据--%>
-    <%--pstmt = con.prepareStatement("select * from employee");--%>
-    <%--rs = pstmt.executeQuery();--%>
-    <%--String result;--%>
-    <%--while (rs.next())--%>
-    <%--{--%>
-        <%--result = "";--%>
-        <%--result += rs.getInt("emp_id") + " ";--%>
-        <%--result += rs.getString("emp_no") + " ";--%>
-        <%--result += rs.getString("emp_name") + " ";--%>
-        <%--result += rs.getString("emp_tel_num") + " ";--%>
-        <%--result += rs.getString("emp_addr") + " ";--%>
-        <%--result += rs.getString("emp_email")+ "<br>";--%>
-        <%--System.out.println(result);--%>
-    <%--}--%>
-<%--}--%>
-<%--catch (Exception e)--%>
-<%--{--%>
-    <%--e.printStackTrace();--%>
-<%--}--%>
-<%--finally--%>
-<%--{--%>
-    <%--ConnectionManager.close(rs, pstmt, con);--%>
-<%--}--%>
-<%--%>--%>
+<body>
+<div class="container">
+    <h1>欢迎使用FZN影院管理系统</h1>
+    <div id="login">
+        <%--<div id="alert">${desc}</div>--%>
+        <form action="Login" method="post">
+            <div id="alert">${desc}</div>
+            <div class="form-group">
+                <p align="center">帐名</p>
+                <input type="text" class="form-control" id="name" name = "name" placeholder="请输入账号"  autofocus>
+            </div>
+            <div class="form-group">
+                <p align="center">密码</p>
+                <input type="password" class="form-control" id="pass" name = "pass" placeholder="请输入密码" >
+            </div>
+            <div id="but">
+                <button type="submit" class="btn btn-primary  btn-block">登陆</button>
+            </div>
+        </form>
+    </div>
+</div>
 
-<h1>hello,jsp&servlet!!!</h1>
-
-
+<%--<script src="./view/system_manager/javascript/login.js"></script>--%>
 </body>
 </html>
