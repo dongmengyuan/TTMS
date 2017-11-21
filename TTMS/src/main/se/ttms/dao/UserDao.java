@@ -7,6 +7,7 @@ import main.se.util.ConnectionManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  * Created by dongmengyuan on 17-11-19.
@@ -125,7 +126,7 @@ public class UserDao implements IUser
             return result;
         }
     }
-}
+
 
 //    /**
 //     * 获取所有用户信息(一般用于和界面交互)
@@ -170,52 +171,46 @@ public class UserDao implements IUser
 //        }
 //    }
 //
-//    /**
-//     * 根据用户名获取用户信息(一般用于和界面交互)
-//     * @return Employee列表
-//     */
-//    @SuppressWarnings("finally")
-//    public ArrayList<Employee> findEmployeeByName(String employeeName)
-//    {
-//        if(employeeName == null || employeeName.equals(""))
-//            return null;
-//
-//        ArrayList<Employee> list = new ArrayList<Employee>();
-//        Employee info = null;
-//
-//        Connection con = ConnectionManager.getInstance().getConnection();
-//        PreparedStatement pstmt = null;
-//        ResultSet rs = null;
-//        try
-//        {
-//            // 获取所有用户数据:模糊查询
-//            pstmt = con.prepareStatement("select * from employee where emp_name like ?");
-//            pstmt.setString(1, "%" + employeeName + "%");// 拼接模糊查询串
-//            rs = pstmt.executeQuery();
-//            while(rs.next())
-//            {
-//                // 如果有值的话再实例化
-//                info = new Employee();
-//                info.setEmp_id(rs.getInt("emp_id"));
-//                info.setEmp_no(rs.getString("emp_no"));
-//                info.setEmp_name(rs.getString("emp_name"));
-//                info.setEmp_tel_num(rs.getString("emp_tel_num"));
-//                info.setEmp_addr(rs.getString("emp_addr"));
-//                info.setEmp_email(rs.getString("emp_email"));
-//                // 加入列表
-//                list.add(info);
-//            }
-//        }
-//        catch(Exception e)
-//        {
-//            e.printStackTrace();
-//        }
-//        finally
-//        {
-//            ConnectionManager.close(rs, pstmt, con);
-//            return list;
-//        }
-//    }
+    /**
+     * 根据用户名获取用户信息(一般用于和界面交互)
+     * @return Employee列表
+     */
+    @SuppressWarnings("finally")
+    public User findUserByNo(String name)
+    {
+        if(name == null || name.equals(""))
+            return null;
+
+        User info = null;
+        Connection con = ConnectionManager.getInstance().getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try
+        {
+            // 获取所有用户数据:模糊查询
+            pstmt = con.prepareStatement("select * from user where emp_no= ?");
+            pstmt.setString(1, name);// 拼接模糊查询串
+            rs = pstmt.executeQuery();
+
+            if(rs.next())
+            {
+                info = new User();
+                info.setEmp_no(rs.getString("emp_no"));
+                info.setEmp_pass(rs.getString("emp_pass"));
+                info.setType(rs.getInt("type"));
+                info.setHead_path(rs.getString("head_path"));
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            ConnectionManager.close(rs, pstmt, con);
+            return info;
+        }
+    }
 //
 //    /**
 //     * 根据employee_id获取用户信息(一般用于数据内部关联操作)
@@ -259,4 +254,5 @@ public class UserDao implements IUser
 //            return info;
 //        }
 //    }
-//
+}
+

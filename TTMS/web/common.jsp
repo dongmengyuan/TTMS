@@ -31,9 +31,9 @@
         <div class="navbar-header">
             <ul class="nav navbar-nav navbar-left">
                 <div class="navbar-header" id="too">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li><a href="./employee.jsp">员工管理</a></li>
-                    </ul>
+                    <%--<ul class="nav navbar-nav navbar-left">--%>
+                        <%--<li><a href="./employee.jsp">员工管理</a></li>--%>
+                    <%--</ul>--%>
                 </div>
             </ul>
         </div>

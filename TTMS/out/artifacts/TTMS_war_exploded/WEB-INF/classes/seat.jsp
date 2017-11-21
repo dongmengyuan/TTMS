@@ -21,7 +21,7 @@
     <title>seat</title>
 </head></head>
 <body>
-<a href="./index1.jsp" style="float: right">&nbsp;<span class="fa fa-sign-out" aria-hidden="true"> </span> 退出</a>
+<a href="./index.jsp" style="float: right">&nbsp;<span class="fa fa-sign-out" aria-hidden="true"> </span> 退出</a>
 <a href="#" style="float: right"><span class="fa fa-user" aria-hidden="true"> </span> 系统管理员 </a>
 
 

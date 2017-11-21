@@ -1,8 +1,11 @@
 package main.java.servlet;
 
+import main.se.ttms.idao.DAOFactory;
+import main.se.ttms.model.Employee;
 import main.se.ttms.model.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,45 +33,24 @@ public class Login extends HttpServlet
         String name = request.getParameter("name");
         String pass = request.getParameter("pass");
         String result = "用户名、密码错误";
-        String page = "index1.jsp";
+        String page = "index.jsp";
 
-        User user = new User();
+        User info =  DAOFactory.creatUserDao().findUserByNo(name);
 
-
-        request.getSession().setAttribute("login","ok");
-
-
-
-        if (name == null || pass == null)
-        {
-            request.setAttribute("desc", result);
+        if(info!=null && info.getEmp_pass().equals(pass)){
+            request.getSession().setAttribute("login","ok");
+            request.getSession().setAttribute("name","name");
+            if(info.getType()==1) {
+                page = "studio.jsp";
+            }else{
+                page = "studio.jsp";
+            }
+        }else{
+            request.setAttribute("result", result);
 
         }
-        else if (name.equals("aaa") && pass.equals("aaa"))
-        {
-            request.setAttribute("name", name);
-            request.getSession().setAttribute("login", "ok");
-            request.getSession().setAttribute("a", "ok");
-            page = "studio.jsp";
-        }
-        else if (name.equals("bbb") && pass.equals("bbb"))
-        {
-            request.setAttribute("name", name);
-            request.getSession().setAttribute("login", "ok");
-            request.getSession().setAttribute("b", "ok");
-            page = "studio.jsp";
-        }
-        else
-        {
-            request.setAttribute("desc", result);
-        }
-
-        //gen ju fan hui bian liang queren yonghu
-
-        request.setAttribute("display", "no");
-
-        request.getRequestDispatcher(page).forward(request, response);
+//        request.getRequestDispatcher(page).forward(request, response);
+        response.sendRedirect(page);
 
     }
-
 }

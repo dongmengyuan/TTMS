@@ -21,7 +21,7 @@
 </head>
 <body>
 
-<a href="./index1.jsp" style="float: right">&nbsp;<span class="fa fa-sign-out" aria-hidden="true"> </span> 退出</a>
+<a href="./index.jsp" style="float: right">&nbsp;<span class="fa fa-sign-out" aria-hidden="true"> </span> 退出</a>
 <a href="#" style="float: right"><span class="fa fa-user" aria-hidden="true"> </span> 系统管理员</a>
 
 <p style="font-size: 40px;text-align: center;margin: 20px;font-family: 'AR PL UKai TW MBE'">FZN影院管理系统</p>

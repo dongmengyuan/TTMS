@@ -14,50 +14,44 @@ import java.util.ArrayList;
 @WebFilter("/*")
 
 public class Filter implements javax.servlet.Filter {
-    public void destroy() {
+    private static ArrayList<String> list = new ArrayList<String>();
+
+    static {
+        list.add("/index.jsp");
+        list.add("/Login");
+        list.add("/view/system_manager/Bootstrap/bs.css");
+        list.add("/view/system_manager/css/login.css");
+        list.add("/view/system_manager/image/sky.jpg");
     }
 
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-            throws IOException, ServletException {
 
-        System.out.println("进入过滤器FilterA");
+    public void init(FilterConfig fConfig) throws ServletException {
 
+    }
+
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse rep = (HttpServletResponse) response;
-        String flag = (String) req.getSession().getAttribute("a");
 
         String path = ((HttpServletRequest) request).getServletPath();
 
-//        if (flag == null || !flag.equals("ok")) {
-//            System.out.println("无权访问a路径");
-//            request.setAttribute("desc", "无权访问a路径");
-//            request.getRequestDispatcher("/error.jsp").forward(request, response);
-//        }
-
-            System.out.println(path+"    ds");
-        ArrayList<String> list = new ArrayList<String>() {
-            {
-                add("/index1.jsp");
-                add("/index.jsp");
-                add("/Login");
-            }
-
-        };
-
         if (list.contains(path)) {
             chain.doFilter(request, response);
-            return ;
+            return;
         }
-        String state = (String)((HttpServletRequest) request).getSession().getAttribute("login");
-        if(state !=null && state.equals("ok")) {
+
+        String state = (String) req.getSession().getAttribute("login");
+        if (state != null && state.equals("ok")) {
             chain.doFilter(request, response);
-            return ;
-        }else{
-            rep.sendRedirect("/index1.jsp");
+            return;
+        } else {
+            System.out.println(path + "   filter resource");
+            rep.sendRedirect("/index.jsp");
         }
     }
 
-    public void init(FilterConfig fConfig) throws ServletException {
+    public void destroy() {
     }
+
 
 }

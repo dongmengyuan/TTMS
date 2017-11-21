@@ -20,7 +20,7 @@
     <title>stdio</title>
 </head>
 <body>
-<a href="./index1.jsp" style="float: right">&nbsp;<span class="fa fa-sign-out" aria-hidden="true"> </span> 退出</a>
+<a href="./index.jsp" style="float: right">&nbsp;<span class="fa fa-sign-out" aria-hidden="true"> </span> 退出</a>
 <a href="#" style="float: right"><span class="fa fa-user" aria-hidden="true"> </span> 系统管理员 </a>
 
 
@@ -50,27 +50,6 @@
     <!--<img src="./image/搜索.jpg" width="30px" height="30px">-->
     <button class="fa fa-search" style="width: 25px;height:25px;"></button>
 </div>
-
-
-
-<%--<%--%>
-    <%--if (request.getAttribute("display").equals("ok")) {--%>
-<%--%>--%>
-<%--<script language="JavaScript">--%>
-    <%--document.getElementById("too").style.display = "block";--%>
-<%--</script>--%>
-<%--<%--%>
-<%--} else {--%>
-<%--%>--%>
-<%--<script language="JavaScript">--%>
-    <%--document.getElementById("too").style.display = "none";--%>
-<%--</script>--%>
-<%--<%--%>
-    <%--}--%>
-<%--%>--%>
-
-
-
 
 <div id="ww">
     <table class="table table-hover" id="stdio" onclick="find(this)">
