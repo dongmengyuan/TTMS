@@ -2,6 +2,8 @@ package main.se.ttms.idao;
 
 import main.se.ttms.model.User;
 
+import java.util.ArrayList;
+
 /**
  * Created by dongmengyuan on 17-11-19.
  */
@@ -16,6 +18,8 @@ public interface IUser
 
     // 改
     public boolean update(User user);
+
+    public ArrayList<User> findUserAll();
 
 //    // 查所有用户(一般用于和界面交互)
 //    public ArrayList<Employee> findEmployeeAll();

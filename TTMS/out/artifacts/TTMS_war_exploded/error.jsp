@@ -20,9 +20,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 <br>
 <div>出错了!</div>
-<div>你的网络有问题，或者操作有问题，反正我们没问题。</div>
+<div>你的权限不够哦！</div>
+<div>或者操作有问题，反正我们没问题。</div>
 <br>
 <div>${desc}</div>
-<div><a href="/filter/">回首页</a></div>
+<%--<div><a href="${pageContext.request.contextPath}/index.jsp">回首页</a></div>--%>
+<div><a href="#" onclick="javascript:history.go(-1);">回上一页</a></div>
+
 </body>
 </html>

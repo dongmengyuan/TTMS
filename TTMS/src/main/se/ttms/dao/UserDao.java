@@ -2,12 +2,14 @@ package main.se.ttms.dao;
 
 import main.se.ttms.idao.IUser;
 
+import main.se.ttms.model.Employee;
 import main.se.ttms.model.User;
 import main.se.util.ConnectionManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  * Created by dongmengyuan on 17-11-19.
@@ -209,6 +211,43 @@ public class UserDao implements IUser
         {
             ConnectionManager.close(rs, pstmt, con);
             return info;
+        }
+    }
+
+
+    public ArrayList<User> findUserAll()
+    {
+        ArrayList<User> list = new ArrayList<User>();
+        User info = null;
+
+        Connection con = ConnectionManager.getInstance().getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try
+        {
+            // 获取所有用户数据
+            pstmt = con.prepareStatement("select * from user");
+            rs = pstmt.executeQuery();
+            while(rs.next())
+            {
+                info = new User();
+
+                info.setEmp_no(rs.getString("emp_no"));
+                info.setEmp_pass(rs.getString("emp_pass"));
+                info.setType(rs.getInt("type"));
+                info.setHead_path(rs.getString("head_path"));
+                // 加入列表
+                list.add(info);
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            ConnectionManager.close(rs, pstmt, con);
+            return list;
         }
     }
 //
