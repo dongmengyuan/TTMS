@@ -25,7 +25,7 @@ public class addUserServlet extends HttpServlet {
             BeanUtils.populate(user, request.getParameterMap());
             String password = "123456";
             user.setEmp_pass(password);
-            password = "images/KM1SPXE5VXH{KJD9KRO{F7P.png";
+            password = "images/4069fa88fdb21ace!400x400_big.jpg";
             user.setHead_path(password);
             UserService service = new UserServiceImpl();
             service.addUser(user);

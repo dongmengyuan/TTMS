@@ -41,14 +41,14 @@ function find() {
 
 
 function checkName() {
-    let check = /^[\u4e00-\u9fa5]{5,9}$/;
+    let check = /^[\u4e00-\u9fa5]{2,9}$/;
     let nam = document.getElementById('name').value;
     if (check.test(nam)) {
         document.getElementById('1').innerText = '';
         return true;
     }
     else {
-        document.getElementById('1').innerText = '请输入5～9个汉字！';
+        document.getElementById('1').innerText = '请输入2～9个汉字！';
         document.getElementById('name').value = '';
         return false;
     }

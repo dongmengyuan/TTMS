@@ -59,7 +59,7 @@
             </div>
 
             <!--  <input type="submit" value="修改" class="layui-btn"> -->
-            <button type="submit" class="btn btn-primary" onclick="return fflag()">提交</button>
+            <button type="submit" class="btn btn-primary"  onclick="return fflag()">提交</button>
         </form>
     </div>
 </div>
